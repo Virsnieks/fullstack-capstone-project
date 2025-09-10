@@ -40,7 +40,7 @@ app.post('/sentiment', async (req, res) => {
         // Task 5: set sentiment to negative or positive based on score rules
         if (analysisResult > 0) {
             sentiment = "positive";
-        } else if (analysisResult < 0) {
+        } else if (analysisResult < 0) {  // or the Theia else if (analysisResult > 0.33)
             sentiment = "negative";
         } 
 
