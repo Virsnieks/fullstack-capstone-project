@@ -42,9 +42,7 @@ app.post('/sentiment', async (req, res) => {
             sentiment = "positive";
         } else if (analysisResult < 0) {
             sentiment = "negative";
-        } else {
-            sentiment = "neutral";
-        }
+        } 
 
         // Logging the result
         logger.info(`Sentiment analysis result: ${analysisResult}`);
