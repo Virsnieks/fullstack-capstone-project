@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import './RegisterPage.css';
 
-// ✅ Task 1: Import urlConfig
+//  Task 1: Import urlConfig
 import { urlConfig } from '../../config';
-// ✅ Task 2: Import useAppContext
+//  Task 2: Import useAppContext
 import { useAppContext } from '../../context/AuthContext';
-// ✅ Task 3: Import useNavigate
+//  Task 3: Import useNavigate
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function RegisterPage() {
   // existing states
@@ -15,14 +16,14 @@ function RegisterPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // ✅ Task 4: State for error message
+  //  Task 4: State for error message
   const [showerr, setShowerr] = useState('');
 
-  // ✅ Task 5: navigate + setIsLoggedIn
+  // Task 5: navigate + setIsLoggedIn
   const navigate = useNavigate();
   const { setIsLoggedIn } = useAppContext();
 
-  // ✅ Updated handleRegister
+  //  Updated handleRegister
   const handleRegister = async () => {
     try {
       const response = await fetch(`${urlConfig.backendUrl}/api/auth/register`, {
@@ -70,6 +71,45 @@ function RegisterPage() {
                 onChange={(e) => setFirstName(e.target.value)}
               />
             </div>
+            {/* Last Name */}
+<div className="mb-4">
+  <label htmlFor="lastName" className="form-label">Last Name</label>
+  <input
+    id="lastName"
+    type="text"
+    className="form-control"
+    placeholder="Enter your last name"
+    value={lastName}
+    onChange={(e) => setLastName(e.target.value)}
+  />
+</div>
+
+{/* Email */}
+<div className="mb-4">
+  <label htmlFor="email" className="form-label">Email</label>
+  <input
+    id="email"
+    type="email"
+    className="form-control"
+    placeholder="Enter your email"
+    value={email}
+    onChange={(e) => setEmail(e.target.value)}
+  />
+</div>
+
+{/* Password */}
+<div className="mb-4">
+  <label htmlFor="password" className="form-label">Password</label>
+  <input
+    id="password"
+    type="password"
+    className="form-control"
+    placeholder="Enter your password"
+    value={password}
+    onChange={(e) => setPassword(e.target.value)}
+  />
+</div>
+
 
             {/* You’ll also want to add inputs for lastName, email, password just like above */}
 
@@ -81,7 +121,7 @@ function RegisterPage() {
             </button>
 
             <p className="mt-4 text-center">
-              Already a member? <a href="/app/login" className="text-primary">Login</a>
+              Already a member? <Link to="/app/login" className="text-primary">Login</Link>
             </p>
           </div>
         </div>
@@ -91,3 +131,5 @@ function RegisterPage() {
 }
 
 export default RegisterPage;
+
+
